@@ -46,7 +46,7 @@ const LandingContent = ({ onSearchComplete }) => {
             </div>
             <div className="flex items-center justify-center w-full max-w-sm space-x-2 mt-5">
                 <Input 
-                    placeholder="Lemon" 
+                    placeholder="Tomato" 
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)} 
                 />

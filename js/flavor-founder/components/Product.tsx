@@ -43,9 +43,9 @@ const Product = ({ data }) => {
                         {nonZeroTastes.map((taste, index) => (
                             <li
                                 key={index}
-                                className="capitalize"
+                                className="capitalize list-none"
                                 style={{
-                                    fontSize: `${Math.min(16 + taste.value / 2, 40)}px`, // Dynamically adjust font size
+                                    fontSize: `${Math.min(16 + taste.value / 2, 30)}px`, // Dynamically adjust font size
                                 }}
                             >
                                 {taste.name} ({taste.value})
