@@ -16,6 +16,7 @@ class FlavorFetcher:
         self.product = product
         self.entity_id = None
         self.soup = None
+        self.other_products = []
 
     def fetch_entity_id(self):
         """Fetch the entity ID for the given product."""
@@ -24,7 +25,14 @@ class FlavorFetcher:
         response = requests.get(search_url)
         data = json.loads(response.json())
         if data:
-            self.entity_id = data[0]["entity_id"]
+            for item in data:
+                if item["entity_alias_readable"].lower() == self.product.lower():
+                    self.entity_id = item["entity_id"]
+                else:
+                    self.other_products.append(item["entity_alias_readable"])
+            
+            if self.entity_id == None:
+                self.entity_id = data[0]["entity_id"]
         else:
             raise ValueError("Product not found")
 
