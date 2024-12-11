@@ -4,7 +4,7 @@ Application which demonstrate you how many molecules of flavour your favorite pr
 
 ## Main idea
 
-The application queries FlavorDB to search for the requested product. FlavorDB lists molecules associated with certain flavors and tastes. In theory, we can predict the taste of a product by calculating how many molecules with specific taste profiles it contains.
+The application queries [FlavorDB](https://cosylab.iiitd.edu.in/flavordb2/) to search for the requested product. FlavorDB lists molecules associated with certain flavors and tastes. In theory, we can predict the taste of a product by calculating how many molecules with specific taste profiles it contains.
 
 We focus exclusively on taste molecules: sweet, bitter, sour, salty, and umami. You can refer to the image below to visualize how it works and understand the data we collect:
 
