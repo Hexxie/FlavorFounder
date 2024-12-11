@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Product = ({ data }) => {
     if (!data) return null; // Render nothing if no data is provided
 
-    const { product_name, flavor_count, image_path, wiki_link  } = data; // Destructure the required data
+    const { product_name, flavor_count, image_path, wiki_link, alt_products  } = data; // Destructure the required data
 
     const nonZeroTastes = Object.entries(flavor_count)
     .filter(([key, value]) => value > 0) // Filter out tastes with value 0
@@ -28,8 +28,9 @@ const Product = ({ data }) => {
                         {wiki_link && (
                             <Link
                                 href={wiki_link}
+                                className="text-black hover:underline flex"
                             >
-                                Learn more on Wikipedia
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/></svg>Learn more on Wikipedia
                             </Link>
                         )}
                     </div>
@@ -57,6 +58,11 @@ const Product = ({ data }) => {
             )}
                 </div>
             </div>
+            <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-10">
+            <span className="text-lg font-bold">
+                Other products: {alt_products.join(', ')}
+            </span>
+</div>
         </div>
     );
 };

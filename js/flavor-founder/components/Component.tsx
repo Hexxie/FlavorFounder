@@ -36,6 +36,12 @@ const LandingContent = ({ onSearchComplete }) => {
             });
     };
 
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    };
+
     return (
         <div className="flex flex-col items-center">
             <h1 className="text-5xl font-bold tracking-[-3px] text-center">
@@ -48,7 +54,8 @@ const LandingContent = ({ onSearchComplete }) => {
                 <Input 
                     placeholder="Tomato" 
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)} 
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
                 />
                 <Button onClick={handleSearch}>Search</Button>
             </div>

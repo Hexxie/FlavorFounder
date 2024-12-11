@@ -73,6 +73,10 @@ class FlavorFetcher:
         print("fetch_image_link")
         """Download the product image."""
         return f"{self.BASE_URL}/static/entities_images/{self.entity_id}.jpg"
+    
+    def get_recommended_products(self):
+        """Return other found products by the request"""
+        return self.other_products
 
 @app.route('/get_flavors', methods=['GET'])
 def get_flavors():
@@ -89,12 +93,14 @@ def get_flavors():
         product_name = fetcher.extract_product_name()
         wiki_link = fetcher.extract_wikipedia_link()
         image_path = fetcher.fetch_image_link()
+        alt_products = fetcher.get_recommended_products()
 
         return jsonify({
             "product_name": product_name,
             "flavor_count": flavor_count,
             "image_path": image_path,
-            "wiki_link": wiki_link
+            "wiki_link": wiki_link,
+            "alt_products": alt_products,
         })
     except ValueError as ve:
         return jsonify({"error": str(ve)}), 404
